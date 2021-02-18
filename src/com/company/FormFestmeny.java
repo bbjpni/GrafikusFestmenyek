@@ -124,6 +124,14 @@ public class FormFestmeny extends JFrame {
                         int sikeres = ab.insertFestmeny(festo,display,ev,cim);
                         String uzenet = String.format("%s hozzáadás", sikeres > 0 ? "Sikeres" : "Sikertelen");
                         JOptionPane.showMessageDialog(null,uzenet);
+                        if (sikeres > 0)
+                        {
+                            textFieldSzerzo.setText("");
+                            textFieldCim.setText("");
+                            radioUnseen.setSelected(false);
+                            radioSeen.setSelected(false);
+                            spinnerKor.setValue(LocalDate.now().getYear());
+                        }
                     } catch (SQLException throwables) {
                         JOptionPane.showMessageDialog(null,
                                 "Adatbázis hiba\n"+throwables.getMessage());
